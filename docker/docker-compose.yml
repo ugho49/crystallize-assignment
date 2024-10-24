@@ -1,0 +1,25 @@
+services:
+  mongodb:
+    image: mongo:8.0.0
+
+  mail:
+    image: maildev/maildev:2.1.0
+    healthcheck:
+      disable: true
+      test: wget --spider http://localhost:1080 || exit 1
+
+  localstack:
+    image: localstack/localstack:3.8.1
+    environment:
+      # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
+      - SERVICES=sqs
+      - AWS_DEFAULT_REGION=eu-west-3
+    volumes:
+      - ./localstack/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
+    healthcheck:
+      test: >-
+        curl -sf localhost:4566/_localstack/init/ready | grep -q '"completed": true,'
+      interval: 5s
+      timeout: 5s
+      start_period: 1m
+      retries: 5

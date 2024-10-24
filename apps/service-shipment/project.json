@@ -1,0 +1,26 @@
+{
+  "name": "service-shipment",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/service-shipment/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "service-shipment:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "service-shipment:build:development"
+        },
+        "production": {
+          "buildTarget": "service-shipment:build:production"
+        }
+      }
+    }
+  }
+}

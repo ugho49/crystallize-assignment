@@ -1,0 +1,26 @@
+{
+  "name": "service-mailer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/service-mailer/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "service-mailer:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "service-mailer:build:development"
+        },
+        "production": {
+          "buildTarget": "service-mailer:build:production"
+        }
+      }
+    }
+  }
+}

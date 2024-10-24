@@ -1,0 +1,13 @@
+services:
+  mongodb:
+    ports:
+      - '27017'
+
+  mail:
+    ports:
+      - '1080'
+      - '1025'
+
+  localstack:
+    ports:
+      - '4566'

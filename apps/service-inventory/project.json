@@ -1,0 +1,26 @@
+{
+  "name": "service-inventory",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/service-inventory/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "service-inventory:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "service-inventory:build:development"
+        },
+        "production": {
+          "buildTarget": "service-inventory:build:production"
+        }
+      }
+    }
+  }
+}

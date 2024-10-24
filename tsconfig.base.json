@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@crystallize/common-types": ["libs/common-types/src/index.ts"],
+      "@crystallize/core": ["libs/core/src/index.ts"],
+      "@crystallize/mongo-client": ["libs/mongo-client/src/index.ts"],
+      "@crystallize/sqs": ["libs/sqs/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+}

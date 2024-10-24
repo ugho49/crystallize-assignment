@@ -1,0 +1,36 @@
+{
+  "name": "service-order",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/service-order/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "service-order:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "service-order:build:development"
+        },
+        "production": {
+          "buildTarget": "service-order:build:production"
+        }
+      }
+    },
+    "test:int": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/service-order",
+        "command": "jest --config=jest.int.config.ts",
+        "color": true
+      }
+    },
+  }
+}
